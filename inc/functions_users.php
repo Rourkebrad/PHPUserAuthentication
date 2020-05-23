@@ -36,6 +36,20 @@ function createUser($username, $password)
 
   }
 
+function updatePassword($password,$userId)
+{
+  global $db;
+
+  try {
+    $query = $db->prepare( 'UPDATE users SET password = :password WHERE id = :userId');
+    $query->bindParam(':password', $password);
+    $query->bindParam(':userId', $userId);
+    $query->execute();
+  } catch (\Exception $e) {
+    throw $e;
+  }
+return true;
+}
 
 
 
