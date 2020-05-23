@@ -19,7 +19,7 @@ function saveUserSession($user)
 function getAuthenticatedUser()
 {
   global $session;
-  return findUserByUsername($session->get('auth_user_id'));
+  return findUserByUserId($session->get('auth_user_id'));
 
 }
 
@@ -32,6 +32,16 @@ function requireAuth()
     redirect('/login.php');
   }
 
+}
+
+function isOwner($ownerId)
+{
+  if(!isAuthenticated())
+  {
+    return false;
+  }
+  global $session;
+  return $ownerId == $session->get('auth_user_id');
 }
 
 

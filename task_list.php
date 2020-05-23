@@ -40,6 +40,8 @@ include 'inc/header.php';
                       <tr><th>Status</th><th>Title</th><th>Action</th></tr>
                         <?php
                         foreach ($tasks as $item) {
+                          if (isOwner($item['user_id']))
+                          {
                             echo "<tr><td>";
                             echo "<input type='checkbox' onChange='javascript:location=\"inc/actions_tasks.php?action=status&task_id=".$item['id'];
                             if (!empty($filter)) {
@@ -61,6 +63,7 @@ include 'inc/header.php';
                             echo "'>Delete</a>";
                             echo "</td></tr>\n";
                         }
+                      }
                         ?>
                   </table>
             </div>
