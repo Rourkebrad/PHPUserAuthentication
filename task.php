@@ -6,7 +6,7 @@ $pageTitle = "Task | Time Tracker";
 $page = "task";
 
 if (request()->get('id')) {
-    list($task_id, $task, $status) = getTask(request()->get('id'));
+    list($task_id, $task, $status, $ownerId) = getTask(request()->get('id'));
 }
 
 include 'inc/header.php';
@@ -39,6 +39,7 @@ include 'inc/header.php';
                     echo "<input type='hidden' name='action' value='update' />";
                     echo "<input type='hidden' name='task_id' value='$task_id' />";
                     echo "<input type='hidden' name='status' value='$status' />";
+                    echo "<input type='hidden' name='status' value='$ownerId' />";
                 } else {
                     echo "<input type='hidden' name='status' value='0' />";
                     echo "<input type='hidden' name='action' value='add' />";
