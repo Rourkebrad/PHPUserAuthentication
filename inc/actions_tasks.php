@@ -6,7 +6,7 @@ $action = request()->get('action');
 $task_id = request()->get('task_id');
 $task = request()->get('task');
 $status = request()->get('status');
-$user = getAuthenticatedUser(); //not sure on this
+$user = getAuthenticatedUser();
 
 $url="../task_list.php";
 if (request()->get('filter')) {
@@ -18,7 +18,7 @@ case "add":
     if (empty($task)) {
         $session->getFlashBag()->add('error', 'Please enter a task');
     } else {
-        if (createTask(['task'=>$task, 'status'=>$status), $user['id']])) { // not sure on this
+        if (createTask(['task'=>$task, 'status'=>$status], $user)) { // not sure on this
             $session->getFlashBag()->add('success', 'New Task Added');
         }
     }
