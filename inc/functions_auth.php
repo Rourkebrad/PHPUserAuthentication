@@ -34,14 +34,14 @@ function requireAuth()
 
 }
 
-function isOwner($ownerId)
+function isOwner($user_id)
 {
   if(!isAuthenticated())
   {
     return false;
   }
   global $session;
-  return $ownerId == $session->get('auth_user_id');
+  return $user_id == $session->get('auth_user_id');
 }
 
 
