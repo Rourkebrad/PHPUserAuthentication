@@ -28,7 +28,7 @@ function requireAuth()
   if (!isAuthenticated())
   {
     global $session;
-    $session->getFlashBag()->add('error', 'Not authorised to proceed');
+    $session->getFlashBag()->add('error', 'You need to be logged in to proceed');
     redirect('/login.php');
   }
 
